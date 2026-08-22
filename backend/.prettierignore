@@ -1,0 +1,12 @@
+# Files
+app.connections.ts
+@common/domain/types
+@types
+
+# Ignore artifacts:
+.scannerwork
+.vscode
+build
+coverage
+dist
+node_modules
