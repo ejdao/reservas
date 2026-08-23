@@ -1,0 +1,43 @@
+.app-set-permisos-dialog {
+  display: block;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .app-set-permisos-dialog__panel {
+    touch-action: manipulation;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .app-set-permisos-dialog__backdrop {
+    animation: app-set-permisos-dialog-fade-in 160ms ease-out;
+  }
+
+  .app-set-permisos-dialog__panel {
+    animation: app-set-permisos-dialog-enter 180ms ease-out;
+  }
+}
+
+@keyframes app-set-permisos-dialog-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes app-set-permisos-dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

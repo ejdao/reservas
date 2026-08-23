@@ -1,0 +1,10 @@
+<div style="max-width: 1200px">
+  <div class="greeting">
+    <h1 class="greeting-title">{{ greeting() }}, {{ config.userFirstName }}</h1>
+    <p class="greeting-subtitle">Panel de administración — {{ config.contextForHumans }}</p>
+  </div>
+
+  @if (resourcesLoaded()) {
+    <gcm-tasks-grid [config]="config" [modules]="modules" [iconMap]="iconMap" />
+  }
+</div>

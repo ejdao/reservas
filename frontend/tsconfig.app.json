@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "composite": true,
+    "types": []
+  },
+  "include": ["./**/*.ts"],
+  "exclude": ["src/**/*.spec.ts", "./ignored", "./node_modules", "./dist"]
+}

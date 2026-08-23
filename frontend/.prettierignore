@@ -1,0 +1,9 @@
+src/modules/big-data/config.ts
+src/modules/legacy/config.ts
+angular.json
+README.md
+public/assets/scss/_utilities.scss
+public/assets/scss/_accents.scss
+public/assets/scss/_colors.scss
+src/app/config.ts
+@common/types

@@ -1,0 +1,124 @@
+:root {
+  --red: #ff0000;
+  --gray: #808080;
+  --blue: #0078d7;
+  --white: #ffffff;
+  --black: #1f1f1f;
+  --green: #008000;
+  --violet: #b21a6c;
+  --yellow: #d8d800;
+  --orange: #ffa500;
+  --amber: #f59e0b;
+  --purple: #7c3aed;
+  --teal: #00b8a9;
+  --cyan: #06b6d4;
+  --sky: #38bdf8;
+  --indigo: #6366f1;
+  --pink: #ec4899;
+  --rose: #f43f5e;
+  --lime: #84cc16;
+  --emerald: #059669;
+  --mint: #2dd4bf;
+  --slate: #64748b;
+  --zinc: #71717a;
+  --neutral: #737373;
+  --stone: #78716c;
+  --brown: #92400e;
+  --gold: #d4af37;
+  --navy: #1e3a8a;
+  --magenta: #d946ef;
+  --lavender: #c084fc;
+  --peach: #fb7185;
+  --coral: #fb923c;
+  --aqua: #22d3ee;
+  --forest: #166534;
+  --olive: #4d7c0f;
+  --sand: #ebd16a;
+  --chocolate: #7c2d12;
+  --plum: #701a75;
+  --turquoise: #14b8a6;
+  --steel: #475569;
+  --charcoal: #111827;
+  --cream: #d7d198;
+  --ice: #94b0c3;
+  --blood: #7f1d1d;
+  --sun: #fbbf24;
+  --royal: #4f46e5;
+  --electric: #22c55e;
+  --midnight: #020617;
+  --ruby: #9f1239;
+  --red-constrant: #fee2e2;
+  --gray-constrant: #f3f4f6;
+  --blue-constrant: #dbeafe;
+  --green-constrant: #dcfce7;
+  --amber-constrant: #fef3c7;
+  --teal-constrant: #ccfbf1;
+  --purple-constrant: #ede9fe;
+  --cyan-constrant: #cffafe;
+  --sky-constrant: #e0f2fe;
+  --indigo-constrant: #e0e7ff;
+  --pink-constrant: #fce7f3;
+  --rose-constrant: #ffe4e6;
+  --lime-constrant: #ecfccb;
+  --emerald-constrant: #d1fae5;
+  --mint-constrant: #ccfbf1;
+  --slate-constrant: #f1f5f9;
+  --zinc-constrant: #f4f4f5;
+  --neutral-constrant: #fafafa;
+  --stone-constrant: #fafaf9;
+  --brown-constrant: #fef3c7;
+  --gold-constrant: #fef9c3;
+  --navy-constrant: #dbeafe;
+  --magenta-constrant: #fae8ff;
+  --lavender-constrant: #f3e8ff;
+  --peach-constrant: #ffe4e6;
+  --coral-constrant: #ffedd5;
+  --aqua-constrant: #ecfeff;
+  --forest-constrant: #dcfce7;
+  --olive-constrant: #ecfccb;
+  --sand-constrant: #fffcf1;
+  --chocolate-constrant: #ffedd5;
+  --plum-constrant: #fce7f3;
+  --turquoise-constrant: #ccfbf1;
+  --steel-constrant: #f1f5f9;
+  --charcoal-constrant: #f9fafb;
+  --cream-constrant: #fffbeb;
+  --ice-constrant: #e0f2fe;
+  --blood-constrant: #fee2e2;
+  --sun-constrant: #fef3c7;
+  --royal-constrant: #e0e7ff;
+  --electric-constrant: #dcfce7;
+  --midnight-constrant: #f8fafc;
+  --ruby-constrant: #ffe4e6;
+}
+
+$colors:
+  'red', 'gray', 'blue', 'white', 'black', 'green', 'violet', 'yellow', 'orange', 'amber', 'purple',
+  'teal', 'cyan', 'sky', 'indigo', 'pink', 'rose', 'lime', 'emerald', 'mint', 'slate', 'zinc',
+  'neutral', 'stone', 'brown', 'gold', 'navy', 'magenta', 'lavender', 'peach', 'coral', 'aqua',
+  'forest', 'olive', 'sand', 'chocolate', 'plum', 'turquoise', 'steel', 'charcoal', 'cream', 'ice',
+  'blood', 'sun', 'royal', 'electric', 'midnight', 'ruby';
+
+@each $color in $colors {
+  .color--#{$color} {
+    color: var(--#{$color}) !important;
+  }
+  .bg-color--#{$color} {
+    background-color: var(--#{$color}) !important;
+  }
+  .bg-color--#{$color}-constrant {
+    background-color: var(--#{$color}-constrant) !important;
+  }
+  .vcl-top-line-card--#{$color} {
+    &::before {
+      background: var(--#{$color}-constrant);
+    }
+    &.add-border-color-on-hover:hover {
+      border-color: var(--#{$color}-constrant) !important;
+    }
+  }
+  .vcl-icon--#{$color} {
+    background: var(--#{$color}-constrant);
+    color: var(--#{$color});
+  }
+}

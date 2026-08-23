@@ -1,0 +1,135 @@
+<section>
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Navegacion por niveles">
+    @for (
+      bc of breadcrumbs();
+      track bc.level + (bc.moduleId ?? '') + (bc.submoduleId ?? '');
+      let last = $last;
+      let first = $first
+    ) {
+      <span class="breadcrumb-segment">
+        @if (first) {
+          @if (modules.length) {
+            <lucide-icon [img]="icons.Home" [size]="14" class="breadcrumb-home-icon" />
+          }
+        }
+
+        @if (last) {
+          @if (modules.length) {
+            <span class="breadcrumb-current">{{ bc.label }}</span>
+          }
+        } @else {
+          <button type="button" class="breadcrumb-link" (click)="onBreadcrumbClick(bc)">
+            {{ bc.label }}
+          </button>
+        }
+
+        @if (!last) {
+          <lucide-icon [img]="icons.ChevronRight" [size]="14" class="breadcrumb-sep" />
+        }
+      </span>
+    }
+  </nav>
+
+  <!-- Section header -->
+  <div class="section-header">
+    @if (modules.length) {
+      <h2 class="section-title">{{ sectionTitle() }}</h2>
+    }
+
+    @if (level() !== 'modules') {
+      <button type="button" class="back-button" (click)="goBack()">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M19 12H5" />
+          <path d="m12 19-7-7 7-7" />
+        </svg>
+        Volver
+      </button>
+    }
+  </div>
+
+  <!-- Cards grid -->
+  <div class="tasks-grid" [class]="animClass()">
+    @for (item of items(); track item.id) {
+      @if (item.id !== 'home') {
+        <!-- Route with href = real link -->
+        @if (level() === 'routes' && item.href) {
+          <a
+            [routerLink]="item.href"
+            class="task-card vcl-top-line-card--{{ item.accent }} add-border-color-on-hover"
+            [class.force-d-none]="
+              ([config.authorities, item.disableOnContexts!]
+                | validateAccess: [config.contextCode, item.authorities!]) ||
+              item.forceDisabledContent
+            "
+          >
+            <ng-container
+              [ngTemplateOutlet]="cardTpl"
+              [ngTemplateOutletContext]="{ $implicit: item }"
+            />
+          </a>
+        } @else {
+          <!-- Drill-down button -->
+          <button
+            type="button"
+            class="task-card vcl-top-line-card--{{ item.accent }} add-border-color-on-hover"
+            [class.force-d-none]="
+              ([config.authorities, item.disableOnContexts!]
+                | validateAccess: [config.contextCode, item.authorities!]) ||
+              item.forceDisabledContent
+            "
+            (click)="onCardClick(item)"
+          >
+            <ng-container
+              [ngTemplateOutlet]="cardTpl"
+              [ngTemplateOutletContext]="{ $implicit: item }"
+            />
+          </button>
+        }
+      }
+    }
+  </div>
+</section>
+
+<!-- Shared card content template -->
+<ng-template #cardTpl let-item>
+  <div class="task-card__top">
+    @if (!item.iconType || item.iconType === 'lucide') {
+      <div class="task-icon" [ngClass]="'vcl-icon--' + item.accent">
+        <app-nav-icon [iconMap]="iconMap" [name]="item.icon" [size]="22" />
+      </div>
+    } @else {
+      <span class="material-icons">{{ item.icon }}</span>
+    }
+    <div class="task-card__top-right">
+      @if (item.count !== undefined && !item.isSingleRoute) {
+        <span class="count-badge">
+          {{ item.count }} {{ level() === 'modules' ? 'opciones' : 'rutas' }}
+        </span>
+        <lucide-icon [img]="icons.ArrowRight" [size]="18" class="task-arrow" />
+      }
+    </div>
+  </div>
+
+  <div class="task-info">
+    <h3 class="task-title">{{ item.label }}</h3>
+    <p class="task-desc">{{ item.description }}</p>
+  </div>
+
+  @if (level() === 'routes' || item.isSingleRoute) {
+    <div class="task-meta">
+      <span class="task-tag task-tag--teal">
+        {{ item.href ? 'Abrir' : 'Sin ruta' }}
+      </span>
+    </div>
+  }
+</ng-template>

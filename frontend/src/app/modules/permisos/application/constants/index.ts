@@ -1,0 +1,2 @@
+export const EXTERNAL_PERMISSION_PREFIX = '998';
+export const GEMI_PERMISSION_PREFIX = '999';

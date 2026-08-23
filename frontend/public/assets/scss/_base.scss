@@ -1,0 +1,88 @@
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --color-primary: rgb(10, 161, 174);
+  --color-primary-dark: rgb(8, 140, 152);
+  --color-primary-darker: rgb(6, 120, 130);
+  --color-muted: rgb(120, 140, 148);
+  --color-border: rgb(218, 225, 228);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+form,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+label,
+input,
+select,
+textarea {
+  line-height: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}

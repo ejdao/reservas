@@ -1,0 +1,36 @@
+.wrapper {
+  min-height: 100vh;
+  background-color: var(--neutral-50);
+}
+
+main.home-main {
+  max-width: 1200px !important;
+}
+
+.greeting {
+  margin-bottom: 32px;
+}
+
+.greeting-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.greeting-subtitle {
+  font-size: 15px;
+  color: var(--neutral-500);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: 20px 16px;
+  }
+
+  .greeting-title {
+    font-size: 22px;
+  }
+}

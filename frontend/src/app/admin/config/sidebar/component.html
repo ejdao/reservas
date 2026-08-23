@@ -1,0 +1,138 @@
+<!-- Overlay -->
+<div
+  class="overlay"
+  [class.overlay-visible]="open"
+  (click)="onOverlayClick()"
+  aria-hidden="true"
+></div>
+
+<!-- Sidebar Panel -->
+<aside class="sidebar" [class.sidebar-open]="open" role="navigation" aria-label="Menu principal">
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <div>
+        <img [src]="config.icon" style="width: 28px" />
+      </div>
+      <div>
+        <p class="header-title">{{ config.enterpriseName }}</p>
+        <p class="header-subtitle">{{ config.contextForHumans }}</p>
+      </div>
+    </div>
+    <button class="close-btn" (click)="onCloseClick()" aria-label="Cerrar menu">
+      <app-nav-icon [iconMap]="iconMap" name="x" [size]="20" />
+    </button>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav-content">
+    <p class="section-label">Modulos</p>
+
+    @for (mod of modules; track mod.id) {
+      <div
+        class="module-item"
+        [class.force-d-none]="
+          ([config.authorities, mod.disableOnContexts!]
+            | validateAccess: [config.contextCode, mod.authorities!]) || mod.forceDisabledContent
+        "
+      >
+        <button
+          class="module-btn"
+          [class.module-btn-active]="isModuleOpen(mod.id)"
+          (click)="toggleModule(mod)"
+          [attr.aria-expanded]="isModuleOpen(mod.id)"
+        >
+          <div class="module-icon vcl-icon--{{ mod.accent }}">
+            <app-nav-icon [iconMap]="iconMap" [name]="mod.icon" [size]="22" />
+          </div>
+          <div class="module-info">
+            <p class="module-label">{{ mod.label }}</p>
+          </div>
+          <app-nav-icon
+            [iconMap]="iconMap"
+            name="chevron-right"
+            [size]="16"
+            class="module-chevron"
+            [class.module-chevron-open]="isModuleOpen(mod.id)"
+          />
+        </button>
+
+        <!-- Submodules -->
+        <ul class="submodule-list" [class.submodule-list-open]="isModuleOpen(mod.id)">
+          @for (sub of mod.submodules; track sub.id) {
+            <li
+              class="submodule-item"
+              [class.force-d-none]="
+                ([config.authorities, sub.disableOnContexts!]
+                  | validateAccess: [config.contextCode, sub.authorities!]) ||
+                sub.forceDisabledContent
+              "
+            >
+              <button
+                class="submodule-btn"
+                [class.submodule-btn-active]="isSubmoduleOpen(mod.id, sub.id)"
+                (click)="toggleSubmodule(mod.id, sub.id)"
+                [attr.aria-expanded]="isSubmoduleOpen(mod.id, sub.id)"
+              >
+                <div class="submodule-icon vcl-icon--{{ sub.accent }}">
+                  <app-nav-icon [iconMap]="iconMap" [name]="sub.icon" [size]="16" />
+                </div>
+                <div class="submodule-info">
+                  <p class="submodule-label">{{ sub.label }}</p>
+                </div>
+                <app-nav-icon
+                  [iconMap]="iconMap"
+                  name="chevron-right"
+                  [size]="14"
+                  class="submodule-chevron"
+                  [class.submodule-chevron-open]="isSubmoduleOpen(mod.id, sub.id)"
+                />
+              </button>
+
+              <!-- Routes -->
+              <ul class="route-list" [class.route-list-open]="isSubmoduleOpen(mod.id, sub.id)">
+                @for (route of sub.routes; track route.id) {
+                  <li
+                    class="route-item"
+                    [class.force-d-none]="
+                      ([config.authorities, route.disableOnContexts!]
+                        | validateAccess: [config.contextCode, route.authorities!]) ||
+                      route.forceDisabledContent
+                    "
+                  >
+                    <a
+                      class="route-link"
+                      [routerLink]="'/' + route.href"
+                      (click)="onRouteClick($event)"
+                    >
+                      <span class="route-dot"></span>
+                      <div class="route-info">
+                        <p class="route-label">{{ route.label }}</p>
+                      </div>
+                      <app-nav-icon
+                        [iconMap]="iconMap"
+                        name="arrow-right"
+                        [size]="14"
+                        class="route-arrow"
+                      />
+                    </a>
+                  </li>
+                }
+              </ul>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+  </nav>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-user">
+      <div class="footer-avatar">{{ config.userInitials }}</div>
+      <div class="footer-user-info">
+        <p class="footer-user-name">{{ config.userFullName }}</p>
+      </div>
+    </div>
+  </div>
+</aside>

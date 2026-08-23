@@ -1,0 +1,7 @@
+@use 'sass:meta';
+
+@use '../public/assets/layouts/main' as layouts;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

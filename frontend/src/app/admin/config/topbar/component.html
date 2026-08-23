@@ -1,0 +1,68 @@
+@if (!showHeaderForRoutes()) {
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="home-link" aria-label="Abrir menú" (click)="menuClicked.emit()">
+        <lucide-icon [img]="icons.Menu" [size]="18" />
+      </button>
+      <a [routerLink]="config.homeUrl" class="logo" aria-label="Ir al inicio">
+        <img [src]="config.icon" style="width: 28px" />
+      </a>
+      <span class="brand-name">{{ config.enterpriseName }}</span>
+      <span class="facility-badge">{{ config.contextForHumans }}</span>
+    </div>
+
+    <div class="topbar-right">
+      <button class="user-area">
+        <div class="avatar">{{ config.userInitials }}</div>
+        <div class="user-info">
+          <span class="user-name">{{ config.userFullName }}</span>
+        </div>
+      </button>
+
+      <button class="topbar-btn" aria-label="Cerrar sesión" (click)="logout.emit()">
+        <lucide-icon [img]="icons.LogOutIcon" [size]="18" />
+      </button>
+    </div>
+  </header>
+} @else {
+  <header class="module-topbar">
+    <div class="topbar-left-group">
+      <!-- Abrir sidebar -->
+      <button class="home-link" aria-label="Abrir menú" (click)="menuClicked.emit()">
+        <lucide-icon [img]="icons.Menu" [size]="18" />
+      </button>
+
+      <div class="topbar-divider"></div>
+
+      <!-- Breadcrumbs en el topbar -->
+      <nav class="topbar-breadcrumbs" aria-label="Ruta de navegacion">
+        <span class="topbar-bc-segment">
+          <a class="topbar-bc-link">Modulos</a>
+          <lucide-icon [img]="icons.ChevronRight" [size]="14" class="topbar-bc-sep" />
+        </span>
+        <span class="topbar-bc-segment">
+          <a class="topbar-bc-link">{{ module() }}</a>
+          <lucide-icon [img]="icons.ChevronRight" [size]="14" class="topbar-bc-sep" />
+        </span>
+        <span class="topbar-bc-segment">
+          <a class="topbar-bc-link">{{ subModule() }}</a>
+          <lucide-icon [img]="icons.ChevronRight" [size]="14" class="topbar-bc-sep" />
+        </span>
+        <span class="topbar-bc-segment">
+          <span class="topbar-bc-current">{{ route() }}</span>
+        </span>
+      </nav>
+    </div>
+
+    <div class="topbar-right-group">
+      <a [routerLink]="config.homeUrl" class="menu-button">
+        <lucide-icon [img]="icons.LayoutGrid" [size]="16" />
+        Volver al menu
+      </a>
+
+      <button class="topbar-btn" aria-label="Cerrar sesión" (click)="logout.emit()">
+        <lucide-icon [img]="icons.LogOutIcon" [size]="18" />
+      </button>
+    </div>
+  </header>
+}

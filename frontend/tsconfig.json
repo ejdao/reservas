@@ -1,0 +1,50 @@
+{
+  "compileOnSave": false,
+  "composite": true,
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve",
+    "paths": {
+      // General
+      "@authorities": ["./@authorities/index.ts"],
+      "@end-points": ["./@end-points/index.ts"],
+      // Stores
+      "@stores/session": ["./@stores/session/index.ts"],
+      // Common
+      "@common/interceptors": ["./@common/interceptors/index.ts"],
+      "@common/constants": ["./@common/constants/index.ts"],
+      "@common/services": ["./@common/services/index.ts"],
+      "@common/models": ["./@common/models/index.ts"],
+      "@common/guards": ["./@common/guards/index.ts"],
+      "@common/types": ["./@common/types/index.ts"],
+      // Components
+      "@components/fields": ["./@components/fields/index.ts"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "typeCheckHostBindings": true,
+    "strictTemplates": true
+  },
+  "files": [],
+  "references": [
+    // --- AVOID NOWRAP --- //
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.spec.json" }
+  ],
+  "include": ["./**/*.ts"],
+  "exclude": ["./ignored", "./node_modules", "./dist"]
+}
