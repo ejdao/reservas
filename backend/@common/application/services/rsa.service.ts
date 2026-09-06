@@ -1,4 +1,4 @@
-import { ENVIRONMENTS } from 'src/app.environments';
+import { ENVIRONMENTS } from '@environments';
 import * as NodeRSA from 'node-rsa';
 import * as dotenv from 'dotenv';
 dotenv.config();

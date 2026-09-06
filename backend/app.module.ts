@@ -3,11 +3,10 @@ import { FILE_PATHS_ARR } from '@common/application/constants';
 import { DATASOURCES } from './app.connections';
 import { SharedModule } from '@shared/module';
 import { SeguridadModule } from '@seg/module';
-import { ReservasModule } from '@rsv/module';
 import * as fs from 'fs';
 
 @Module({
-  imports: [ReservasModule, SeguridadModule, SharedModule],
+  imports: [SeguridadModule, SharedModule],
 })
 export class AppModule implements OnModuleInit {
   onModuleInit() {

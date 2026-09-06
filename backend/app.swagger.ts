@@ -2,12 +2,10 @@ import { INestApplication } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { SeguridadModule } from '@seg/module';
 import { SRD_MODULES } from '@shared/module';
-import { ReservasModule } from '@rsv/module';
 
 const title = 'Proyecto Base';
 
 const config = [
-  { name: 'Reservas', url: 'docs/reservas', version: '1.0', modules: [ReservasModule] },
   { name: 'Seguridad', url: 'docs/seguridad', version: '1.0', modules: [SeguridadModule] },
   { name: 'Shared', url: 'docs/shared', version: '1.0', modules: SRD_MODULES },
 ];

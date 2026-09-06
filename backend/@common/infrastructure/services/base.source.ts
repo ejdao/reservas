@@ -7,7 +7,7 @@ import { CTM_CONTEXTS, CtmContextType } from '@common/domain/types';
 import { FetchPermisoRes } from '@seg/application/responses';
 import { JWT_SERVICES, STRING_UTILITIES } from '@common/application/services';
 import { fetchAuthorities, fetchAuthoritiesByUsuario } from './authorities';
-import { switchConn } from 'src/app.connections';
+import { switchConn } from '@connections';
 
 @Entity('UNNAMED')
 export class JustForVerifyOrm {

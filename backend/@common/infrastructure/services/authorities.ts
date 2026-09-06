@@ -4,7 +4,7 @@ import { UsuarioOrm, PermisoOrm } from '@orm/seguridad';
 import { RSA_SERVICES } from '@common/application/services';
 import { CtmContextType } from '@common/domain/types';
 import { FetchPermisoRes } from '@seg/application/responses';
-import { switchConn } from 'src/app.connections';
+import { switchConn } from '@connections';
 
 export const fetchAuthoritiesByUsuario = async (
   id: number,

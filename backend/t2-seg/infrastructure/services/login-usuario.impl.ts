@@ -5,13 +5,8 @@ import { FetchEnterprisesDto, LoginUsuarioDto } from '@seg/application/dtos';
 import { CTM_CONTEXTS, ctmContextTypeFactory } from '@common/domain/types';
 import { FetchEnterprisesRes, LoginRes } from '@seg/application/responses';
 import { UsuarioOrm, EmpresaOrm, TokenOrm } from '@orm/seguridad';
-import { switchConn } from 'src/app.connections';
-import {
-  CYPTO_SERVICES,
-  decryptValueFromFront,
-  JWT_SERVICES,
-  RSA_SERVICES,
-} from '@common/application/services';
+import { switchConn } from '@connections';
+import { CYPTO_SERVICES, decryptValueFromFront, JWT_SERVICES } from '@common/application/services';
 
 @Injectable()
 export class LoginUsuarioImpl {

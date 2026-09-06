@@ -2,8 +2,8 @@ import * as jwt from 'jsonwebtoken';
 import { Injectable, CanActivate, ExecutionContext, UnauthorizedException } from '@nestjs/common';
 import { JWT_SERVICES } from '@common/application/services';
 import { UsuarioOrm, TokenOrm } from '@orm/seguridad';
-import { ENVIRONMENTS } from 'src/app.environments';
-import { switchConn } from 'src/app.connections';
+import { ENVIRONMENTS } from '@environments';
+import { switchConn } from '@connections';
 
 @Injectable()
 export class ActiveTokenGuard implements CanActivate {

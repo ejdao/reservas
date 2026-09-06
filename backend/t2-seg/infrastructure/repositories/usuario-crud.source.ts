@@ -6,7 +6,7 @@ import { CreateUsuarioRes, FetchUsuarioRes } from '@seg/application/responses';
 import { CreateUsuarioDto, UpdateUsuarioDto } from '@seg/application/dtos';
 import { usuarioOrmToUsuarioResFactory } from '../factories';
 import { UsuarioOrm, TokenOrm } from '@orm/seguridad';
-import { TRANSACCIONES } from '@transacciones';
+import { TRANSACCIONES } from '@transactions';
 import {
   ESTADO_USUARIO,
   estadoUsuarioTypeFactory,
