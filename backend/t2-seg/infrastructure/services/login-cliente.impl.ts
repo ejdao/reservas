@@ -3,7 +3,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CTM_CONTEXTS, ctmContextTypeFactory } from '@common/domain/types';
 import { LoginClienteDto } from '@seg/application/dtos';
 import { LoginRes } from '@seg/application/responses';
-import { switchConn } from 'src/app.connections';
+import { switchConn } from '@connections';
 import { EmpresaOrm } from '@orm/seguridad';
 import { ClienteOrm } from '@orm/general';
 import {

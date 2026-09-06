@@ -3,12 +3,12 @@
   "version": "2.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "node init && ng serve",
+    "build": "node init && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "format": "prettier --write \"**/*.ts\" \"**/*.html\" \"**/*.scss\" \"**/*.json\" \"**/*.js\"",
-    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
+    "run:all": "node init && node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "prettier": {
     "printWidth": 100,

@@ -1,5 +1,5 @@
 import { CtmContextCode, CtmContextType, ctmContextTypeFactory } from '@common/domain/types';
-import { ENVIRONMENTS } from 'src/app.environments';
+import { ENVIRONMENTS } from '@environments';
 import { RSA_SERVICES } from './rsa.service';
 import { jwtDecode } from 'jwt-decode';
 import * as jwt from 'jsonwebtoken';

@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import * as jwt from 'jsonwebtoken';
 import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
-import { ENVIRONMENTS } from 'src/app.environments';
+import { ENVIRONMENTS } from '@environments';
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
